@@ -38,7 +38,7 @@ Dudley into his high chair.'
     puts(Histogram_Generator.sort_histogram(histogram))
   end
   module_function :perform
-
+##############
   def number_to_word(number)
     case number
     when 1 then
