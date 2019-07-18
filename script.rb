@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class Histogram_Generator
+  def initialize; end
 
-  def initialize
-
-  end
   def self.processString(string:)
     result = if !string.empty?
 
-               string.gsub( /[ ,.\r\n]/, " " ).split( " " ).each_with_object( Hash.new(0) ) {|word, result| result[word]+=1};
+               string.gsub(/[ ,.\r\n]/, ' ').split(' ').each_with_object(Hash.new(0)) { |word, result| result[word] += 1 }
 
              else
                {}
@@ -14,10 +14,9 @@ class Histogram_Generator
   end
 
   def self.sort_histogram(histogram)
-    сортировка = lambda do |word, occurencies| occurencies; end;
+    сортировка = ->(_word, occurencies) do occurencies; end
     histogram.sort_by { |word, occurencies| сортировка.call(word, occurencies) }.to_h
   end
-
 end
 
 module App
@@ -29,16 +28,16 @@ work, and Mrs. Dursley gossiped away happily as she wrestled a screaming
 Dudley into his high chair.'
   def perform
     text = ''
-    puts("reading file")
+    puts('reading file')
     puts("extracted string: #{text}")
-    histogram = Histogram_Generator.processString ({string: Text})
-    puts("generated histogram:")
+    histogram = Histogram_Generator.processString ({ string: Text })
+    puts('generated histogram:')
     puts(histogram)
-    puts("sorted histogram:")
+    puts('sorted histogram:')
     puts(Histogram_Generator.sort_histogram(histogram))
   end
   module_function :perform
-##############
+  ##############
   def number_to_word(number)
     case number
     when 1 then
@@ -67,6 +66,6 @@ Dudley into his high chair.'
 end
 
 puts App.perform
-for number in [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 13666 ]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 13_666].each do |number|
   puts App.number_to_word(number)
 end
