@@ -17,3 +17,5 @@ Metrics/MethodLength:
   Enabled: true
   CountComments: true
   Max: 22
+Style/ClassVars:
+  Enabled: false
