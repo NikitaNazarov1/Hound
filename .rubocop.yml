@@ -21,3 +21,5 @@ Style/ClassVars:
     Enabled: false
 Lint/UselessAssignment:
     Enabled: false
+Lint/Void:
+  Enabled: false
