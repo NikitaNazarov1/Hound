@@ -4,28 +4,27 @@ class HistogramGenerator
   def initialize; end
 
   def self.process_string(string:)
-    _result = if !string.empty?
-                string.gsub(/[ ,.\r\n]/, ' ').split(' ').each_with_object(Hash.new(0)) do |word, result|
+    _result = if string.empty?
+                {}
+              else
+                string.split(/\W+/).each_with_object(Hash.new(0)) do |word, result|
                   result[word] += 1
                 end
-              else
-                {}
               end
   end
 
   def self.sort_histogram(histogram)
-    sort = ->(_word, occurencies) do occurencies; end
-    histogram.sort_by { |word, occurencies| sort.call(word, occurencies) }.to_h
+    histogram.sort_by { |_word, occurencies| occurencies }.to_h
   end
 end
 
 module App
   TEXT = 'When Mr. and Mrs. Dursley woke up on the dull, gray Tuesday our story
-starts, there was nothing about the cloudy sky outside to suggest that
-strange and mysterious things would soon be happening all over the
-country. Mr. Dursley hummed as he picked out his most boring tie for
-work, and Mrs. Dursley gossiped away happily as she wrestled a screaming
-Dudley into his high chair.'
+    starts, there was nothing about the cloudy sky outside to suggest that
+    strange and mysterious things would soon be happening all over the
+    country. Mr. Dursley hummed as he picked out his most boring tie for
+    work, and Mrs. Dursley gossiped away happily as she wrestled a screaming
+    Dudley into his high chair.'
 
   module_function
 
@@ -34,41 +33,21 @@ Dudley into his high chair.'
     puts('reading file')
     puts("extracted string: #{text}")
     histogram = HistogramGenerator.process_string(string: TEXT)
-    puts('generated histogram:')
-    puts(histogram)
-    puts('sorted histogram:')
-    puts(HistogramGenerator.sort_histogram(histogram))
+    puts("generated histogram: #{histogram}")
+    puts("sorted histogram: #{HistogramGenerator.sort_histogram(histogram)}")
   end
 
   def number_to_word(number)
-    number > 5 ? number_to_word_2(number) : number_to_word_1(number)
-  end
-
-  def number_to_word_1(number)
     case number
-    when 1
-      'one'
-    when 2
-      'two'
-    when 3
-      'three'
-    when 4
-      'four'
-    when 5
-      'five'
-    end
-  end
-
-  def number_to_word_2(number)
-    case number
-    when 6
-      'six'
-    when 7
-      'seven'
-    when 8
-      'eight'
-    when 9
-      'nine'
+    when 1 then 'one'
+    when 2 then 'two'
+    when 3 then 'three'
+    when 4 then 'four'
+    when 5 then 'five'
+    when 6 then 'six'
+    when 7 then 'seven'
+    when 8 then 'eight'
+    when 9 then 'nine'
     else
       'oops'
     end
