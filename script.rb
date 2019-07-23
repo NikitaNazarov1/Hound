@@ -41,6 +41,10 @@ Dudley into his high chair.'
   end
 
   def number_to_word(number)
+    number > 5 ? number_to_word_2(number) : number_to_word_1(number)
+  end
+
+  def number_to_word_1(number)
     case number
     when 1
       'one'
@@ -52,6 +56,11 @@ Dudley into his high chair.'
       'four'
     when 5
       'five'
+    end
+  end
+
+  def number_to_word_2(number)
+    case number
     when 6
       'six'
     when 7
