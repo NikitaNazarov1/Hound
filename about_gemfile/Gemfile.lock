@@ -1,0 +1,23 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    gserver (0.0.1)
+    lolcat (99.9.99)
+      manpages (~> 0.6.1)
+      optimist (~> 3.0.0)
+      paint (~> 2.0.0)
+    manpages (0.6.1)
+    nyancat (0.2.1)
+      gserver (~> 0)
+    optimist (3.0.0)
+    paint (2.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  lolcat
+  nyancat
+
+BUNDLED WITH
+   1.16.2
